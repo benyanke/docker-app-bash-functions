@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+# docker-compose
+function docker-compose() {
+  docker run \
+    --interactive \
+    --tty \
+    --workdir "$PWD" \
+    --rm \
+    --volume /var/run/docker.sock:/var/run/docker.sock \
+    --volume "$PWD":"$PWD" \
+    docker/compose:latest \
+    docker-compose $@
+}
+
+
